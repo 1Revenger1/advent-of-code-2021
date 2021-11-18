@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2"
+  },
+  "scripts": {
+    "start": "tsc && node bin/Index.js"
+  },
+  "name": "advent-of-code-2021",
+  "version": "1.0.0",
+  "main": "src/Index.ts",
+  "author": "Avery Black <avery.c.black@gmail.com>",
+  "license": "MIT"
+}
