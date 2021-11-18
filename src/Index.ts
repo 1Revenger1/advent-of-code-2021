@@ -20,12 +20,14 @@ function header() {
     console.log(chalk.green("+-----------------------+\n"));
 }
 
+// Make rl.question a promise
 async function grabUserInput() {
     return new Promise<string>((resolve) => {
         rl.question("Choose which day to run: ", resolve);
     });
 }
 
+// Get input file, description, and module for the day in "dir"
 function grabSolution(dir: Dirent): Soln {
     const input = readFileSync(`Inputs/Input${dir.name}.txt`, { encoding: "utf8" });
     const day = require(`./Solutions/${dir.name}/Day ${dir.name}.js`);
@@ -38,6 +40,13 @@ function grabSolution(dir: Dirent): Soln {
     };
 }
 
+async function timePart(soln: (input: string) => void, input: string) {
+    const startTime = new Date().getTime();
+    soln(input);
+    const endTime = new Date().getTime();
+    return endTime - startTime;
+}
+
 (async () => {
     header();
 
@@ -47,9 +56,9 @@ function grabSolution(dir: Dirent): Soln {
     const solutions = result.filter((dir) => dir.isDirectory())
                             .map((dir) => grabSolution(dir));
 
-    const argc = process.argv.length;
+    // Get day we should run
     let num = 0;
-    if (argc == 3) {
+    if (process.argv.length == 3) {
         num = parseInt(process.argv[2]);
     } else {
         solutions.forEach((value, i) => {
@@ -67,8 +76,11 @@ function grabSolution(dir: Dirent): Soln {
         return;
     }
     
+    // Run selected day
     const solution = solutions[num];
     const solExport = solution.export;
-    solExport.part1(solution.input);
-    solExport.part2(solution.input);
+    const timePart1 = await timePart(solExport.part1, solution.input);
+    console.log("Part 1 took... " + timePart1 + " ms");
+    const timePart2 = await timePart(solExport.part2, solution.input);
+    console.log("Part 2 took... " + timePart2 + " ms");
 })();
