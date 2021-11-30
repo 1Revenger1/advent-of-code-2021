@@ -2,6 +2,7 @@ import chalk from "chalk";
 import { readdirSync, readFileSync, Dirent } from "fs";
 import { SolnExport } from "./SolnExport";
 import * as readline from "readline";
+import { cwd } from "process";
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -29,7 +30,8 @@ async function grabUserInput() {
 
 // Get input file, description, and module for the day in "dir"
 function grabSolution(dir: Dirent): Soln {
-    const input = readFileSync(`Inputs/Input${dir.name}.txt`, { encoding: "utf8" });
+    const path = `${process.cwd()}/src/Solutions/${dir.name}`;
+    const input = readFileSync(`${path}/Input.txt`, { encoding: "utf8" });
     const day = require(`./Solutions/${dir.name}/Day ${dir.name}.js`);
     const dayExport : SolnExport = day.soln;
 
