@@ -18,11 +18,13 @@ function soln1(input: string) : void {
 function soln2(input: string) : void {
     let depths = input.split ("\n").map ((value) => parseInt (value));
     
+    let slidingDepth = depths[2] + depths[1] + depths[0];
+    let lastSlidingDepth = slidingDepth;
     let increasing = 0;
-    let lastSlidingDepth = depths[2] + depths[1] + depths[0];
 
-    for (let i = 2; i < depths.length; i++) {
-        let slidingDepth = depths[i] + depths[i - 1] + depths[i - 2];
+    for (let i = 3; i < depths.length; i++) {
+        slidingDepth += depths[i];
+        slidingDepth -= depths[i - 3];
 
         if (slidingDepth > lastSlidingDepth) {
             increasing++;
