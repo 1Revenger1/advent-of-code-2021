@@ -7,12 +7,14 @@ function soln1(input: string) : void {
 
     input.split("\n").forEach (value => {
         let values = value.split(" ");
+        let x = parseInt(values[1]);
+
         if (values[0] == "forward") {
-            forward += parseInt(values[1]);
+            forward += x;
         } else if (values[0] == "down") {
-            depth += parseInt(values[1]);
+            depth += x;
         } else if (values[0] == "up") {
-            depth -= parseInt(values[1]);
+            depth -= x;
         }
     });
 
@@ -26,13 +28,15 @@ function soln2(input: string) : void {
 
     input.split("\n").forEach (value => {
         let values = value.split(" ");
+        let x = parseInt(values[1]);
+
         if (values[0] == "forward") {
-            forward += parseInt(values[1]);
-            depth += aim * parseInt(values[1]);
+            forward += x;
+            depth += aim * x;
         } else if (values[0] == "down") {
-            aim += parseInt(values[1]);
+            aim += x;
         } else if (values[0] == "up") {
-            aim -= parseInt(values[1]);
+            aim -= x;
         }
     });
 
