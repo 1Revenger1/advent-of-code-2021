@@ -42,7 +42,7 @@ function soln2(input: string) : void {
 }
 
 export const soln : SolnExport = {
-    desc: "Solution Template",
+    desc: "Binary Diagnostic",
     part1: soln1,
     part2: soln2,
 };
