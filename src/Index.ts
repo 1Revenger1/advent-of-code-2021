@@ -64,7 +64,7 @@ async function timePart(soln: (input: string) => void, input: string) {
         num = parseInt(process.argv[2]);
     } else {
         solutions.forEach((value, i) => {
-            console.log(chalk.blueBright(i) + ": Day " + value.desc);
+            console.log(chalk.blueBright(i) + ": " + value.desc);
         });
     
         console.log();
