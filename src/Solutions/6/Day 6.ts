@@ -32,11 +32,7 @@ function soln2(input: string) : void {
         days[8] = day0;
     }
 
-    let total = 0;
-    days.forEach(day => {
-        total += day
-    });
-    console.log(total);
+    console.log(days.reduce((prev, next) => prev += next));
 }
 
 export const soln : SolnExport = {
