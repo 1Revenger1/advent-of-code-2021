@@ -10,6 +10,7 @@ const rl = readline.createInterface({
 });
 
 interface Soln {
+    day: number,
     desc: string,
     input: string,
     export: SolnExport,
@@ -36,6 +37,7 @@ function grabSolution(dir: Dirent): Soln {
     const dayExport : SolnExport = day.soln;
 
     return {
+        day: parseInt(dir.name),
         desc: dayExport.desc,
         input: input,
         export: dayExport,
@@ -56,7 +58,8 @@ async function timePart(soln: (input: string) => void, input: string) {
 
     // Grab solutions and their inputs
     const solutions = result.filter((dir) => dir.isDirectory())
-                            .map((dir) => grabSolution(dir));
+                            .map((dir) => grabSolution(dir))
+                            .sort((a, b) => a.day - b.day);
 
     // Get day we should run
     let num = 0;
