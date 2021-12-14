@@ -80,16 +80,6 @@ function soln2(input: string) : void {
         }
     });
 
-    pos = pos.filter((val, idx) => {
-        for (let i = 0; i < pos.length; i++) {
-            let loc = pos[i];
-            if (i == idx) return true;
-            if (loc.x == val.x &&
-                loc.y == val.y) return false;
-        }
-
-        return true;
-    });
 
     let maxX = 0;
     let maxY = 0;
