@@ -63,8 +63,8 @@ function soln2(input: string) : void {
 
     let hits = 0;
 
-    for (let x = 0; x < 500; x++) {
-        for (let y = -200; y < 200; y++) {
+    for (let x = 0; x < 300; x++) {
+        for (let y = -100; y < 100; y++) {
             let curMax = iterate(target, {x: x, y: y});
             if (isFinite(curMax)) hits++;
         }
