@@ -44,7 +44,7 @@ function soln1(input: string) : void {
 
     let y = 0;
     let max = Number.NEGATIVE_INFINITY;
-    while (y < 200) {
+    while (y < 100) {
         let curMax = iterate(target, {x: x, y: y});
         y++;
         if (!isFinite(curMax)) continue;
